@@ -1,0 +1,41 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>
+Mon blog
+</title>
+</head>
+<body style="background-color:#E0E0E0">
+<div class="container" style="width:800px;background-color:#ffffff">
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Bienvenu dans mon blog des articles</span>
+</nav>
+{% for art in article  %}
+<br>
+<div class="container" style="border-left:6px solid red;">
+     <h4><spam style="background-color:red; color:#ffffff ;padding:1px;">{{art.titre}} </spam></h4>
+     <spam style="background-color:#A0A0A0;margin-left:%;padding:3px;color:#ffffff;border-radius:10px;">#{{art.categorie}}</spam>
+     <br><br>
+     <p style="border-left:1px solid #E0E0E0;padding:5px;"> Détails :{{art.contenu}}</p>
+     <p style="color:#2B2A2A;font-size: 15px;">Le {{art.date}} | Par {{ art.auteur}}</p>
+     
+</div>
+
+     <h5 style="margin-left:5%;"><spam style="border-bottom:1px solid #E0E0E0;">Les Commentaire :</spam></h5>
+     <div style="margin-left:8%;color:#5C5C5C">
+     {% for com in commentaire%}
+       {% if com.artilce_id == art.id %}
+         <p><spam style="color:#2B2A2A;font-size: 20px;">-{{com.pseudo}}</spam> : {{com.contenu}} </p>
+       {% endif %}
+     {% endfor %}
+     <br>
+     <a href="{% url 'commentaire' art.id %}">Poster votre commentaire... </a>
+     </div>
+     <br>
+
+
+     <hr>
+{% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+<!--<form action="{% url "commentaire" id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Submit" />
+</form>
+<p>la variable est :{{test}}|->{{id}}</p>-->
+<div class="container">
+
+<form action="{% url "commentaire" id %}" method="post">
+{% csrf_token %}
+
+<input type='hidden' name='csrfmiddlewaretoken' value='WS3czXuMKVec6GhymbH5eY2VRA90pmRnB4nkLltBmhj2I81YLXef9w6nt1RG8ROg' />
+<label for="id_pseudo">Pseudo :</label><br> <input  type="text" name="pseudo" maxlength="100" required id="id_pseudo" /><br>
+<label for="id_email">Email :</label><br> <input type="email" name="email" maxlength="254" required id="id_email" /><br>
+<label for="id_contenu">Contenu :</label><br> <textarea name="contenu" cols="40" rows="5" required id="id_contenu">
+</textarea><br>
+<label for="id_artilce"></label> <input type="hidden" name="artilce" required id="id_artilce" value="{{id}}"><br>
+
+    <input type="submit" value="Publié" />
+    {{varz}}
+</form>
+{% if envoi %}
+<div class="alert alert-success" role="alert" style="width:400px">
+Votre message a bien été envoyé !
+</div>
+{% endif %}
+</div>
+</body>
+</html>
